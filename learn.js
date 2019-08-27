@@ -13,9 +13,27 @@
  // 数组去重
  // 
  // 
+Array.prototype.unique2 = function () {
+	var res = [];
+	for (var i = 0; i < this.length; i++) {
+		if (res.indexOf(i) === -1) {
+			res.push(i);
+		}
+	}
+	return res;
+}
 
-
-
+Array.prototype.unique3 = function () {
+	var obj = {};
+	var res = [];
+	for (var i = 0; i < this.length; i++) {
+		if (!obj[this[i]]) {
+			obj[this[i]] = 1;
+			res.push(this[i]);
+		}
+	}
+	return res;
+}
 
 
 
