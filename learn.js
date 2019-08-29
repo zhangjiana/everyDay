@@ -34,18 +34,62 @@ Array.prototype.unique3 = function () {
 	}
 	return res;
 }
+Array.prototype.unique4 = function () {
+	return [...new Set(this)]
+}
 
-
-
-
+// 连接符转驼峰
+var str = 'pop-up'
+str.replace(/-\D/, function(a) {
+	return a.charAt(1).toUpperCase();
+})
 // 驼峰转连接符
-// 
-// 
-
-
-
-
+var str = 'popUp'
+str.replace(/[A-Z]/, function(a) {
+	return '-' + a.toLowerCase();
+})
 
 
 // 给定一个数组，一个值。求数组中哪两个数的和为这个值
 // 
+
+function findSome(arr, target) {
+	var res = [];
+	for(let i = 0; i < arr.length; i++) {
+		for(let j = 1; j < arr.length; j++) {
+			if (arr[i] + arr[j] === target) {
+				res.push([i, j])
+			}
+		}
+	}
+	return res;
+}
+
+function findSome2(arr, target) {
+	var res = []
+	var _some = function(arrs, tar) {
+		if(arrs.length === 0){
+			return false
+	    }
+		for (let i = 0; i < arrs.length; i++) {
+			if (arrs[0] + arrs[i] === tar) {
+				res.push[arrs[0], arrs[i]];
+			}
+		}
+		console.log(arrs);
+		arrs.shift();
+		return _some(arrs, tar);
+	}
+	_some(arr, target);
+	return res;
+}
+
+
+
+
+
+
+
+
+
+
