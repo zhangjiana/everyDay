@@ -84,8 +84,18 @@ function findSome2(arr, target) {
 	return res;
 }
 
+// debounce 防抖函数
+// 触发事件后，n秒后执行，如果n秒内又触发了这个事件，则重新计数
 
-
+function debounce(fn, delay) {
+	let timer = null;
+	return (...args) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			fn.apply(this, args);
+		}, delay);
+	}
+}
 
 
 
