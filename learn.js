@@ -97,8 +97,47 @@ function debounce(fn, delay) {
 	}
 }
 
-
-
+// 深克隆
+// 基本实现
+function clone(target) {
+	if (typeof target === 'object') {
+		let obj = Array.isArray(target) ? [] : {};
+		for (const key in target) {
+            obj[key] = clone(target[key], map);
+        }
+		return obj;
+	} else {
+		return targe;
+	}
+}
+// 性能优化
+function forEach(array, interte) {
+	let index = -1;
+	while(++index < array.length ) {
+		interte(array[index], index)
+	}
+	return array;
+}
+function clone2(target, map = new WeakMap()) {
+	if (typeof target === 'object') {
+		let isArray = Array.isArray(target);
+		let cloneTarget = isArray ? [] : {};
+		if (map.get(target)) {
+			return map.get(target)
+		}
+		map.set(target, cloneTarget);
+		let keys = isArray ? undefined : Object.keys(target);
+		forEach(keys || target, (value, key) {
+			if (keys) {
+				key = value
+			}
+			cloneTarget = clone2(target, map);
+		})
+		return cloneTarget;
+	} else {
+		return target;
+	}
+}
 
 
 
