@@ -131,7 +131,7 @@ function clone2(target, map = new WeakMap()) {
 			if (keys) {
 				key = value
 			}
-			cloneTarget = clone2(target, map);
+			cloneTarget[key] = clone2(target[key], map);
 		})
 		return cloneTarget;
 	} else {
