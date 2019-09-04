@@ -152,6 +152,24 @@ function popSort(arr) {
 	}
 	return arr
 }
+// 快速排序
 
+function quickSort(arr) {
+	// 如果数组为空，则返回
+	if (arr.length <= 1) { return arr; }
+	var index = parseInt(arr.length / 2)
+	// 将中间的数取出来
+	var mid = arr.splice(index, 1)[0];
+	var left = [];
+	var right = [];
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] < mid) {
+			left.push(arr[i])
+		} else {
+			right.push(arr[i]);
+		}
+	}
+	return quickSort(left).concat([mid], quickSort(right))
+}
 
 
