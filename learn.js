@@ -172,4 +172,17 @@ function quickSort(arr) {
 	return quickSort(left).concat([mid], quickSort(right))
 }
 
+// throttle 节流函数
+// 在一定时间内，某事件只触发一次, 如果单位时间内多次触发，只有一次生效。
+function throttle(fn, delay = 500) {
+	let flag = true;
+	return (...args) {
+		if (!flag) = return;
+		flag = false;
+		setTimeout(() => {
+			fn.apply(this, args);
+			flag = true;
+		}, delay);
+	}
+}
 
