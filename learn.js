@@ -38,6 +38,13 @@ Array.prototype.unique4 = function () {
 	return [...new Set(this)]
 }
 
+// 多维数组变一维数组
+function flatten(arr) {
+	return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flatten(val)) : acc.concat(val), [])
+}
+// 如果浏览器支持数组的flat函数
+// arr.flat(Infinity)
+
 // 连接符转驼峰
 var str = 'pop-up'
 str.replace(/-\D/, function(a) {
@@ -286,7 +293,8 @@ let my = new MyPromise((reslove, reject) => {
 console.log('end')
 
 
-
+// 正则匹配 , 12345 => 12,345
+str.split('').reverse().join('').replace(/(\d{3}\B)/g, '$1,').split('').reverse().join('');
 
 
 
