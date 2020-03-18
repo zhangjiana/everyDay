@@ -296,11 +296,28 @@ console.log('end')
 // 正则匹配 , 12345 => 12,345
 str.split('').reverse().join('').replace(/(\d{3}\B)/g, '$1,').split('').reverse().join('');
 
+// 深拷贝
 
+function deepclone(obj) {
+	if (typeof obj === 'object') {
+		let target = Array.isArray(obj) ? [] : {};
+		for (let key in obj) {
+			target[key] = clone(obj[key]);
+		}
+		return clone(target);
+	} else {
+		return obj
+	}
+}
 
-
-
-
+function clone(obj) {
+	if (obj === null || typeof obj !== 'object') return obj;
+	let newObj = new obj.constructor();
+	for (let key in Object.getOwnPropertyDescriptors(obj)) {
+		newObj[key] = clone(obj[key]);
+	}
+	return newObj;
+}
 
 
 
